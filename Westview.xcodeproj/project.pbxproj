@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A65447271D6A99FD00CE7BA6 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65447261D6A99FD00CE7BA6 /* Announcement.swift */; };
+		A65447291D6AB50300CE7BA6 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65447281D6AB50300CE7BA6 /* ScheduleTableViewCell.swift */; };
+		A654472B1D6AB65900CE7BA6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A654472A1D6AB65900CE7BA6 /* Extensions.swift */; };
+		A68E247D1D717B82001BA27B /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68E247C1D717B82001BA27B /* Period.swift */; };
 		A6D86D021D692171007F0CA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D86D011D692171007F0CA4 /* AppDelegate.swift */; };
 		A6D86D041D692171007F0CA4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D86D031D692171007F0CA4 /* HomeViewController.swift */; };
 		A6D86D071D692171007F0CA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6D86D051D692171007F0CA4 /* Main.storyboard */; };
@@ -38,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A65447261D6A99FD00CE7BA6 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
+		A65447281D6AB50300CE7BA6 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		A654472A1D6AB65900CE7BA6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A68E247C1D717B82001BA27B /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		A6D86CFE1D692171007F0CA4 /* Westview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Westview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D86D011D692171007F0CA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6D86D031D692171007F0CA4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -111,9 +119,13 @@
 				A6D86D3C1D694C23007F0CA4 /* ScheduleViewController.swift */,
 				A6D86D031D692171007F0CA4 /* HomeViewController.swift */,
 				A6D86D051D692171007F0CA4 /* Main.storyboard */,
+				A65447281D6AB50300CE7BA6 /* ScheduleTableViewCell.swift */,
+				A68E247C1D717B82001BA27B /* Period.swift */,
 				A6D86D081D692171007F0CA4 /* Assets.xcassets */,
 				A6D86D0A1D692171007F0CA4 /* LaunchScreen.storyboard */,
 				A6D86D0D1D692171007F0CA4 /* Info.plist */,
+				A65447261D6A99FD00CE7BA6 /* Announcement.swift */,
+				A654472A1D6AB65900CE7BA6 /* Extensions.swift */,
 			);
 			path = Westview;
 			sourceTree = "<group>";
@@ -293,10 +305,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A65447271D6A99FD00CE7BA6 /* Announcement.swift in Sources */,
 				A6D86D3D1D694C23007F0CA4 /* ScheduleViewController.swift in Sources */,
 				A6D86D041D692171007F0CA4 /* HomeViewController.swift in Sources */,
+				A654472B1D6AB65900CE7BA6 /* Extensions.swift in Sources */,
+				A68E247D1D717B82001BA27B /* Period.swift in Sources */,
 				A6D86D321D69290B007F0CA4 /* BlankTableViewCell.swift in Sources */,
 				A6D86D3B1D6944F8007F0CA4 /* ImageCollectionViewCell.swift in Sources */,
+				A65447291D6AB50300CE7BA6 /* ScheduleTableViewCell.swift in Sources */,
 				A6D86D021D692171007F0CA4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,6 +458,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Westview/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = one.ShahIndustries.Westview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -453,6 +470,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Westview/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = one.ShahIndustries.Westview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -524,6 +542,7 @@
 				A6D86D281D692171007F0CA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A6D86D291D692171007F0CA4 /* Build configuration list for PBXNativeTarget "WestviewTests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +551,7 @@
 				A6D86D2B1D692171007F0CA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A6D86D2C1D692171007F0CA4 /* Build configuration list for PBXNativeTarget "WestviewUITests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +560,7 @@
 				A6D86D2E1D692171007F0CA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
