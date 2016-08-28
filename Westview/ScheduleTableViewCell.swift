@@ -26,13 +26,16 @@ class ScheduleTableViewCell: UITableViewCell {
     }
     
     func loadPeriod(p: (period: String, start: NSDate, end: NSDate)) {
-        periodNameLabel.text! = p.period
+        periodNameLabel.text! = "  \(p.period)"
         
         let start = p.start.clockTime()
         let end = p.end.clockTime()
         
-        startTimeLabel.text! = start
-        endTimeLabel.text! = end
+        startTimeLabel.text! = "\(start)"
+        endTimeLabel.text! = "\(end)"
+        endTimeLabel.text! = endTimeLabel.text!.stringByAppendingString("\u{00a0}")
+        
+        self.backgroundColor = endTimeLabel.backgroundColor
     }
 
 }

@@ -17,6 +17,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     var W: [(period: String, start: NSDate, end: NSDate)] = []
     var TT: [(period: String, start: NSDate, end: NSDate)] = []
     
+    @IBOutlet weak var dayPicker: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var scheduleImage: UIImageView!
     override func viewDidLoad() {
@@ -28,7 +29,9 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         
         setupSchedule()
         
-        let today = NSDate().day()! - 1
+        var today = NSDate().day()!
+        today -= 2
+        
         loadData(today)
         
         
@@ -38,44 +41,46 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     func setupSchedule() {
         ////Monday Friday
         
-        MF.append((period: "Period 1", NSDate(hours: 8, minutes: 5), NSDate(hours: 9, minutes: 33)))
-        MF.append((period: "Passing", (MF.last?.end)!, NSDate(hours: 9, minutes: 39)))
-        MF.append((period: "Homeroom", (MF.last?.end)!, NSDate(hours: 9, minutes: 54)))
-        MF.append((period: "Passing", (MF.last?.end)!, NSDate(hours: 10, minutes: 00)))
-        MF.append((period: "Period 2", (MF.last?.end)!, NSDate(hours: 11, minutes: 28)))
-        MF.append((period: "Lunch", (MF.last?.end)!, NSDate(hours: 12, minutes: 02)))
-        MF.append((period: "Passing", (MF.last?.end)!, NSDate(hours: 12, minutes: 08)))
-        MF.append((period: "Period 3", (MF.last?.end)!, NSDate(hours: 1, minutes: 36)))
-        MF.append((period: "Passing", (MF.last?.end)!, NSDate(hours: 1, minutes: 42)))
-        MF.append((period: "Period 4", (MF.last?.end)!, NSDate(hours: 3, minutes: 10)))
+        MF.append((period: "Period 1", NSDate.make(8, minutes: 05), NSDate.make(9, minutes: 33)))
+        MF.append((period: "Passing", (MF.last?.end)!, NSDate.make(9, minutes: 39)))
+        MF.append((period: "Homeroom", (MF.last?.end)!, NSDate.make(9, minutes: 54)))
+        MF.append((period: "Passing", (MF.last?.end)!, NSDate.make(10, minutes: 00)))
+        MF.append((period: "Period 2", (MF.last?.end)!, NSDate.make(11, minutes: 28)))
+        MF.append((period: "Lunch", (MF.last?.end)!, NSDate.make(12, minutes: 02)))
+        MF.append((period: "Passing", (MF.last?.end)!, NSDate.make(12, minutes: 08)))
+        MF.append((period: "Period 3", (MF.last?.end)!, NSDate.make(1, minutes: 36)))
+        MF.append((period: "Passing", (MF.last?.end)!, NSDate.make(1, minutes: 42)))
+        MF.append((period: "Period 4", (MF.last?.end)!, NSDate.make(3, minutes: 10)))
         
         ////Wednesday
-        W.append((period: "Period 1", NSDate(hours: 9, minutes: 15), NSDate(hours: 10, minutes: 25)))
-        W.append((period: "Passing", (W.last?.end)!, NSDate(hours: 10, minutes: 31)))
-        W.append((period: "Homeroom", (W.last?.end)!, NSDate(hours: 10, minutes: 46)))
-        W.append((period: "Passing", (W.last?.end)!, NSDate(hours: 10, minutes: 52)))
-        W.append((period: "Period 2", (W.last?.end)!, NSDate(hours: 12, minutes: 02)))
-        W.append((period: "Lunch", (W.last?.end)!, NSDate(hours: 12, minutes: 38)))
-        W.append((period: "Passing", (W.last?.end)!, NSDate(hours: 12, minutes: 44)))
-        W.append((period: "Period 3", (W.last?.end)!, NSDate(hours: 1, minutes: 54 )))
-        W.append((period: "Passing", (W.last?.end)!, NSDate(hours: 2, minutes: 00)))
-        W.append((period: "Period 4", (W.last?.end)!, NSDate(hours: 3, minutes: 10)))
+        W.append((period: "Period 1", NSDate.make(9, minutes: 15), NSDate.make(10, minutes: 25)))
+        W.append((period: "Passing", (W.last?.end)!, NSDate.make(10, minutes: 31)))
+        W.append((period: "Homeroom", (W.last?.end)!, NSDate.make(10, minutes: 46)))
+        W.append((period: "Passing", (W.last?.end)!, NSDate.make(10, minutes: 52)))
+        W.append((period: "Period 2", (W.last?.end)!, NSDate.make(12, minutes: 02)))
+        W.append((period: "Lunch", (W.last?.end)!, NSDate.make(12, minutes: 38)))
+        W.append((period: "Passing", (W.last?.end)!, NSDate.make(12, minutes: 44)))
+        W.append((period: "Period 3", (W.last?.end)!, NSDate.make(1, minutes: 54 )))
+        W.append((period: "Passing", (W.last?.end)!, NSDate.make(2, minutes: 00)))
+        W.append((period: "Period 4", (W.last?.end)!, NSDate.make(3, minutes: 10)))
         
         ////Thursday
         
-        TT.append((period: "Period 1", NSDate(hours: 8, minutes: 5), NSDate(hours: 9, minutes: 26)))
-        TT.append((period: "WT", (TT.last?.end)!, NSDate(hours: 9, minutes: 54)))
-        TT.append((period: "Passing", (TT.last?.end)!, NSDate(hours: 10, minutes: 00)))
-        TT.append((period: "Period 2", (TT.last?.end)!, NSDate(hours: 11, minutes: 21)))
-        TT.append((period: "Lunch", (TT.last?.end)!, NSDate(hours: 11, minutes: 56)))
-        TT.append((period: "Passing", (TT.last?.end)!, NSDate(hours: 12, minutes: 02)))
-        TT.append((period: "SSR", (TT.last?.end)!, NSDate(hours: 12, minutes: 22)))
-        TT.append((period: "Period 3", (TT.last?.end)!, NSDate(hours: 1, minutes: 43)))
-        TT.append((period: "Passing", (TT.last?.end)!, NSDate(hours: 1, minutes: 49)))
-        TT.append((period: "Period 4", (TT.last?.end)!, NSDate(hours: 3, minutes: 10)))
+        TT.append((period: "Period 1", NSDate.make(8, minutes: 5), NSDate.make(9, minutes: 26)))
+        TT.append((period: "WT", (TT.last?.end)!, NSDate.make(9, minutes: 54)))
+        TT.append((period: "Passing", (TT.last?.end)!, NSDate.make(10, minutes: 00)))
+        TT.append((period: "Period 2", (TT.last?.end)!, NSDate.make(11, minutes: 21)))
+        TT.append((period: "Lunch", (TT.last?.end)!, NSDate.make(11, minutes: 56)))
+        TT.append((period: "Passing", (TT.last?.end)!, NSDate.make(12, minutes: 02)))
+        TT.append((period: "SSR", (TT.last?.end)!, NSDate.make(12, minutes: 22)))
+        TT.append((period: "Period 3", (TT.last?.end)!, NSDate.make(1, minutes: 43)))
+        TT.append((period: "Passing", (TT.last?.end)!, NSDate.make(1, minutes: 49)))
+        TT.append((period: "Period 4", (TT.last?.end)!, NSDate.make(3, minutes: 10)))
     }
     
     func loadData(day: Int) {
+        dayPicker.selectedSegmentIndex = day
+
         switch day {
         case 0,4:
             currentDay = MF
@@ -86,9 +91,13 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         case 2:
             currentDay = W
             break
+            
         default:
             currentDay = MF
+            dayPicker.selectedSegmentIndex = 0
         }
+        
+        
         tableView.reloadData()
     }
     

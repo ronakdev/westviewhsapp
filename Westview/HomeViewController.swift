@@ -108,7 +108,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func openLink(link: String) {
         UIApplication.sharedApplication().openURL(NSURL(string: link)!)
-
+        
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         return CGFloat(horizGap)
@@ -204,13 +204,39 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             announcementStrings[j] = "<p class=\"event\">" + announcementStrings[j]
             let styling = "<style>@import url(https://fonts.googleapis.com/css?family=Lato|Oswald);body{text-align:center;}img{display:none}.event{font-size:2em;font-family:Oswald,sans-serif}.event_message{font-size:1.1em;font-family:Lato,sans-serif}</style>"
             announcementStrings[j] = styling + announcementStrings[j]
-            announcementStrings[j] += "<script>var as=document.getElementsByTagName(\"a\");console.log(as);for(var j=0;j<as.length;j++){if(as[j].href.substring(0,4)==\"http\"||as[j].href.substring(0,3)==\"www\"){console.log()}else{as[j].href=\"http://www2.powayusd.com/pusdwvhs/\"+as[j].href;console.log(as[j].href)}}</script>"
+            announcementStrings[j] += "<script>var as=document.getElementsByTagName(\"a\");console.log(as);for(var j=0;j<as.length;j++){if(as[j].href.substring(0,4)==\"http\"||as[j].href.substring(0,3)==\"www\"){}else{var str=as[j].href;var first=str.split(\"applewebdata://\");var res=first[1].split(\"/\");var finalStr=\"http://www2.powayusd.com/pusdwvhs/\"+res[1]as[j].href=finalStr console.log(as[j].href)}}</script>"
+            let str = announcementStrings[j]
+            let coms = str.componentsSeparatedByString("<a href=\"")
+            let insert = "<a href=\"http://www2.powayusd.com/pusdwvhs/"
+            var final = ""
+            var first = false
+            var index=0
+            for s in coms {
+                final += s
+                if (index == 0) {
+                    index = 1
+                    first = true
+                }
+                if (coms[index - 1][0..<3] == "http") {
+                    final += "<a href=\""
+                }
+                else {
+                    final += insert
+                }
+                if first {
+                    first = false
+                    index = 0
+                }
+                index += 1
+                
+            }
             
+            announcementStrings[j] = final
             
             announcements.append(Announcement(content: announcementStrings[j]))
         }
-        print(second[0])
-       announcements.removeFirst()
+        print(announcements[4].htmlContent)
+        announcements.removeFirst()
         
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in

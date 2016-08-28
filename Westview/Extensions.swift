@@ -7,7 +7,22 @@
 //
 
 import Foundation
-
+extension String {
+    
+    subscript (i: Int) -> Character {
+        return self[self.startIndex.advancedBy(i)]
+    }
+    
+    subscript (i: Int) -> String {
+        return String(self[i] as Character)
+    }
+    
+    subscript (r: Range<Int>) -> String {
+        let start = startIndex.advancedBy(r.startIndex)
+        let end = start.advancedBy(r.endIndex - r.startIndex)
+        return self[Range(start ..< end)]
+    }
+}
 extension NSDate
 {
     convenience
@@ -19,9 +34,14 @@ extension NSDate
         self.init(timeInterval:0, sinceDate:d)
     }
     
-    convenience init (hours: Double, minutes: Double) {
-        let time: NSTimeInterval = (3600 * hours) + (60 * minutes)
-        self.init(timeIntervalSinceNow: time)
+    static func make(hours: Int, minutes: Int) -> NSDate{
+        let calendar = NSCalendar.currentCalendar()
+        let comps = NSDateComponents()
+        comps.hour = hours
+        comps.minute = minutes
+        comps.day = NSDate().day()!
+        let date = calendar.dateFromComponents(comps)
+        return date!
     }
     
     func clockTime() -> String {
@@ -30,6 +50,10 @@ extension NSDate
         let comp = calendar.components([.Hour, .Minute], fromDate: self)
         let hour = comp.hour
         let minute = comp.minute
+        if (minute < 10) {
+            return "\(hour):0\(minute)"
+
+        }
         
         return "\(hour):\(minute)"
     }
